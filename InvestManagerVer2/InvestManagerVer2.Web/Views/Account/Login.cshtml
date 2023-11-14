@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+<div class="text-center">
+    <div class="containerLogin">
+        <form>
+            <br />
+            <h1 class="h1Login">Login</h1>
+            <input type="text" placeholder="Enter Your Emale"><br /><br /><br />
+            <input type="password" placeholder="Enter Your Password"><br />
+            <button type="button" class="btn btn-dark">LogIn</button><br /><br />
+            <p>Don’t have an account?</p><a href="@Url.Action("Step1", "Register")" class="alert-link"> Sign Up </a>
+        </form>
+    </div>
+</div>
