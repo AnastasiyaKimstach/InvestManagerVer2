@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using InvestManager.ApplicatoinCore.Models;
 using Microsoft.EntityFrameworkCore; 
 
@@ -16,6 +12,7 @@ namespace InvestManager.Infrastructure.Data
         {
 
         }
+
         public DbSet<Asset> Assets { get; set; }
         public DbSet<AssetInPortfolio> AssetsInPortfolio { get; set; }
         public DbSet<Category> Categories { get; set; }
