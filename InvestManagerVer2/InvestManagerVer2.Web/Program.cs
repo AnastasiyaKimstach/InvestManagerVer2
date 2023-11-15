@@ -1,18 +1,16 @@
-using InvestManager.Infrastructure.Data;
-using InvestManagerVer2.Web.Interfaces;
-using InvestManagerVer2.Web.Repositories;
-using InvestManagerVer2.Web.Servisces;
-using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);//Failed to load configuration from file 'D:\source\repos\InvestManagerVer2\InvestManagerVer2\InvestManagerVer2.Web\appsettings.json'
 
+InvestManager.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<InvestManagerContext>(
-    options =>
-    options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=InvestManager;Trusted_Connection=True;MultipleActiveResultSets=true"));
-builder.Services.AddScoped<IRepository, ClientRepository>();
-builder.Services.AddScoped<IClientService, ClientService>();
+//builder.Services.AddDbContext<InvestManagerContext>(
+//    options =>
+//    options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=InvestManager;Trusted_Connection=True;MultipleActiveResultSets=true"));
+//builder.Services.AddScoped<IRepository, InvestManagerRepository>();
+//builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 
