@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace InvestManager.ApplicatoinCore.Models
 {
-    public class ChangePrice
+    public class ChangePrice : BaseModel
     {
-        [Key]
-        public Guid ChangePriceID { get; set; }
         public float Price { get; set; }
         public string Month { get; set; }//добавить перечисление
         [Range(2000, 2030)]

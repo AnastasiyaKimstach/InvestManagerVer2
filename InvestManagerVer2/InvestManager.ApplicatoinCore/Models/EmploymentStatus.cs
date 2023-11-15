@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace InvestManager.ApplicatoinCore.Models
 {
-    public class EmploymentStatus
+    public class EmploymentStatus : BaseModel
     {
-        [Key]
-        public Guid SatusID { get; set; }
         public string StatusName { get; set; }
     }
 }

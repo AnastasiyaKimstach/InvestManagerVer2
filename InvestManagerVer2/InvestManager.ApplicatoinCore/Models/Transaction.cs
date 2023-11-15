@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace InvestManager.ApplicatoinCore.Models
 {
-    public class Transaction
+    public class Transaction : BaseModel
     {
-        [Key]
-        public Guid TransactionID { get; set; }
         public TransactionType TransactionType { get; set; }
         public float Price { get; set; }
         public DateTime TransactionDate { get; set; }

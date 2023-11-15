@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace InvestManager.ApplicatoinCore.Models
 {
-    public class AsssetPriceHistory
+    public class AsssetPriceHistory : BaseModel
     {
-        [Key]
-        public Guid AsssetPriceHistoryID { get; set; }
         public float Price {  get; set; }
         public DateTime Timestamp { get; set;}
 

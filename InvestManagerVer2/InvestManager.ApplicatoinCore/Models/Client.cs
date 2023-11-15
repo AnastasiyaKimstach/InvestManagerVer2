@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace InvestManager.ApplicatoinCore.Models
 {
-    public class Client
+    public class Client : BaseModel
     {
-        [Key]
-        public Guid ClientID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string? Pathronumic { get; set; }

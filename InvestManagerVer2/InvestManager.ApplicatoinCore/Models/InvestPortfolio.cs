@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace InvestManager.ApplicatoinCore.Models
 {
-    public class InvestPortfolio
+    public class InvestPortfolio : BaseModel
     {
-        [Key]
-        public Guid PortfolioID { get; set; }
-
         public Client? Client { get; set; }
         public Guid ClientID { get; set; }
 
