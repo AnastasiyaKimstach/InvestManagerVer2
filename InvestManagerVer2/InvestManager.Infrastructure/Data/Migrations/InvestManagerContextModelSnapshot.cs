@@ -24,7 +24,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Asset", b =>
                 {
-                    b.Property<Guid>("AssetID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -43,21 +43,21 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AssetID");
+                    b.HasKey("Id");
 
                     b.ToTable("Assets");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.AssetInPortfolio", b =>
                 {
-                    b.Property<Guid>("AssetInPortfolioID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("AssetId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CategoryID")
+                    b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CategotyID")
@@ -69,11 +69,11 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("AssetInPortfolioID");
+                    b.HasKey("Id");
 
                     b.HasIndex("AssetId");
 
-                    b.HasIndex("CategoryID");
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("PortfolioID");
 
@@ -82,7 +82,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Category", b =>
                 {
-                    b.Property<Guid>("CategoryID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -90,14 +90,14 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CategoryID");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.ChangePrice", b =>
                 {
-                    b.Property<Guid>("ChangePriceID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -111,14 +111,14 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("ChangePriceID");
+                    b.HasKey("Id");
 
                     b.ToTable("ChangesPrice");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Client", b =>
                 {
-                    b.Property<Guid>("ClientID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -135,7 +135,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmploymentStatusSatusID")
+                    b.Property<Guid>("EmploymentStatusId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Gender")
@@ -166,18 +166,18 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ClientID");
+                    b.HasKey("Id");
 
                     b.HasIndex("CountryID");
 
-                    b.HasIndex("EmploymentStatusSatusID");
+                    b.HasIndex("EmploymentStatusId");
 
                     b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Country", b =>
                 {
-                    b.Property<Guid>("CountryID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -185,14 +185,14 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CountryID");
+                    b.HasKey("Id");
 
                     b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.EmploymentStatus", b =>
                 {
-                    b.Property<Guid>("SatusID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -200,14 +200,14 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("SatusID");
+                    b.HasKey("Id");
 
                     b.ToTable("EmploymentStatuses");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.InvestPortfolio", b =>
                 {
-                    b.Property<Guid>("PortfolioID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -227,7 +227,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PortfolioID");
+                    b.HasKey("Id");
 
                     b.HasIndex("ClientID");
 
@@ -236,7 +236,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Statistics", b =>
                 {
-                    b.Property<Guid>("StatisticID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -252,7 +252,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("StatisticID");
+                    b.HasKey("Id");
 
                     b.HasIndex("PortfolioID");
 
@@ -261,7 +261,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Transaction", b =>
                 {
-                    b.Property<Guid>("TransactionID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -271,7 +271,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<Guid>("AssetInPortfolioID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("InvestPortfolioPortfolioID")
+                    b.Property<Guid?>("InvestPortfolioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PortfolionID")
@@ -289,11 +289,11 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<int>("TransactionType")
                         .HasColumnType("int");
 
-                    b.HasKey("TransactionID");
+                    b.HasKey("Id");
 
                     b.HasIndex("AssetInPortfolioID");
 
-                    b.HasIndex("InvestPortfolioPortfolioID");
+                    b.HasIndex("InvestPortfolioId");
 
                     b.ToTable("Transactions");
                 });
@@ -308,7 +308,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
                     b.HasOne("InvestManager.ApplicatoinCore.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryID");
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("InvestManager.ApplicatoinCore.Models.InvestPortfolio", "Portfolio")
                         .WithMany()
@@ -333,7 +333,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
                     b.HasOne("InvestManager.ApplicatoinCore.Models.EmploymentStatus", "EmploymentStatus")
                         .WithMany()
-                        .HasForeignKey("EmploymentStatusSatusID")
+                        .HasForeignKey("EmploymentStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -374,7 +374,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
                     b.HasOne("InvestManager.ApplicatoinCore.Models.InvestPortfolio", "InvestPortfolio")
                         .WithMany()
-                        .HasForeignKey("InvestPortfolioPortfolioID");
+                        .HasForeignKey("InvestPortfolioId");
 
                     b.Navigation("AssetInPortfolio");
 

@@ -15,7 +15,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 name: "Assets",
                 columns: table => new
                 {
-                    AssetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AssetName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Ticker = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -23,64 +23,64 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Assets", x => x.AssetID);
+                    table.PrimaryKey("PK_Assets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
-                    CategoryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ChangesPrice",
                 columns: table => new
                 {
-                    ChangePriceID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
                     Month = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChangesPrice", x => x.ChangePriceID);
+                    table.PrimaryKey("PK_ChangesPrice", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
-                    CountryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CountryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Countries", x => x.CountryID);
+                    table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "EmploymentStatuses",
                 columns: table => new
                 {
-                    SatusID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StatusName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmploymentStatuses", x => x.SatusID);
+                    table.PrimaryKey("PK_EmploymentStatuses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Clients",
                 columns: table => new
                 {
-                    ClientID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Pathronumic = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -90,25 +90,25 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     Gender = table.Column<bool>(type: "bit", nullable: false),
                     CountryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StatusID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmploymentStatusSatusID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmploymentStatusId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NumberPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clients", x => x.ClientID);
+                    table.PrimaryKey("PK_Clients", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Clients_Countries_CountryID",
                         column: x => x.CountryID,
                         principalTable: "Countries",
-                        principalColumn: "CountryID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Clients_EmploymentStatuses_EmploymentStatusSatusID",
-                        column: x => x.EmploymentStatusSatusID,
+                        name: "FK_Clients_EmploymentStatuses_EmploymentStatusId",
+                        column: x => x.EmploymentStatusId,
                         principalTable: "EmploymentStatuses",
-                        principalColumn: "SatusID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -116,7 +116,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 name: "InvestPortfolios",
                 columns: table => new
                 {
-                    PortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClientID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PortfolioName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PortfolioGoal = table.Column<int>(type: "int", nullable: false),
@@ -125,12 +125,12 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InvestPortfolios", x => x.PortfolioID);
+                    table.PrimaryKey("PK_InvestPortfolios", x => x.Id);
                     table.ForeignKey(
                         name: "FK_InvestPortfolios_Clients_ClientID",
                         column: x => x.ClientID,
                         principalTable: "Clients",
-                        principalColumn: "ClientID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -138,32 +138,32 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 name: "AssetsInPortfolio",
                 columns: table => new
                 {
-                    AssetInPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AssetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    CategoryID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CategotyID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AssetsInPortfolio", x => x.AssetInPortfolioID);
+                    table.PrimaryKey("PK_AssetsInPortfolio", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AssetsInPortfolio_Assets_AssetId",
                         column: x => x.AssetId,
                         principalTable: "Assets",
-                        principalColumn: "AssetID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AssetsInPortfolio_Categories_CategoryID",
-                        column: x => x.CategoryID,
+                        name: "FK_AssetsInPortfolio_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryID");
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AssetsInPortfolio_InvestPortfolios_PortfolioID",
                         column: x => x.PortfolioID,
                         principalTable: "InvestPortfolios",
-                        principalColumn: "PortfolioID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -171,7 +171,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 name: "Statistices",
                 columns: table => new
                 {
-                    StatisticID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PortfolioProfitability = table.Column<float>(type: "real", nullable: false),
@@ -179,12 +179,12 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statistices", x => x.StatisticID);
+                    table.PrimaryKey("PK_Statistices", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Statistices_InvestPortfolios_PortfolioID",
                         column: x => x.PortfolioID,
                         principalTable: "InvestPortfolios",
-                        principalColumn: "PortfolioID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -192,30 +192,30 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 name: "Transactions",
                 columns: table => new
                 {
-                    TransactionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TransactionType = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<float>(type: "real", nullable: false),
                     AssetInPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    InvestPortfolioPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    InvestPortfolioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     PortfolionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transactions", x => x.TransactionID);
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Transactions_AssetsInPortfolio_AssetInPortfolioID",
                         column: x => x.AssetInPortfolioID,
                         principalTable: "AssetsInPortfolio",
-                        principalColumn: "AssetInPortfolioID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Transactions_InvestPortfolios_InvestPortfolioPortfolioID",
-                        column: x => x.InvestPortfolioPortfolioID,
+                        name: "FK_Transactions_InvestPortfolios_InvestPortfolioId",
+                        column: x => x.InvestPortfolioId,
                         principalTable: "InvestPortfolios",
-                        principalColumn: "PortfolioID");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -224,9 +224,9 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 column: "AssetId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssetsInPortfolio_CategoryID",
+                name: "IX_AssetsInPortfolio_CategoryId",
                 table: "AssetsInPortfolio",
-                column: "CategoryID");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssetsInPortfolio_PortfolioID",
@@ -239,9 +239,9 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 column: "CountryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clients_EmploymentStatusSatusID",
+                name: "IX_Clients_EmploymentStatusId",
                 table: "Clients",
-                column: "EmploymentStatusSatusID");
+                column: "EmploymentStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InvestPortfolios_ClientID",
@@ -259,9 +259,9 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 column: "AssetInPortfolioID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transactions_InvestPortfolioPortfolioID",
+                name: "IX_Transactions_InvestPortfolioId",
                 table: "Transactions",
-                column: "InvestPortfolioPortfolioID");
+                column: "InvestPortfolioId");
         }
 
         /// <inheritdoc />
