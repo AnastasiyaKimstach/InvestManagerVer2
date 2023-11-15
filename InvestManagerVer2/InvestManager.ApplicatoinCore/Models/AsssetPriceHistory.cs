@@ -13,7 +13,8 @@ namespace InvestManager.ApplicatoinCore.Models
         public Guid AsssetPriceHistoryID { get; set; }
         public float Price {  get; set; }
         public DateTime Timestamp { get; set;}
+
+        public Asset? Asset { get; set; }
         public Guid AssetID { get; set; }
-        public Asset Asset { get; set; }
     }
 }

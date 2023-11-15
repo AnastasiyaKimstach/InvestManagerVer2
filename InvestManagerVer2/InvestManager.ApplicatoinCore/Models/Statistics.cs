@@ -11,8 +11,9 @@ namespace InvestManager.ApplicatoinCore.Models
     {
         [Key]
         public Guid StatisticID { get; set; }
+
+        public InvestPortfolio? Portfolio { get; set; }
         public Guid PortfolioID { get; set; }
-        public InvestPortfolio Portfolio { get; set; }
         public DateTime UpdateDate { get; set; }
         public float PortfolioProfitability { get; set; }
         public float PortfolioCost { get; set;}

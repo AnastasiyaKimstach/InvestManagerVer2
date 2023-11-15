@@ -9,12 +9,19 @@
     background-color: #f2f2f2;
     border: 1px solid #ccc;
     border-radius: 40px;
+    text-align: left;
+    justify-content: left;
+
+   
+}
+/*.btn {
+    position: relative;
     text-align: center;
     justify-content: center;
-}
-
-
+}*/
 .h1Login {
+    position: relative;
+    text-align: center;
     font-family: Arial;
     font-style: italic;
     font-weight: bold;
@@ -22,27 +29,14 @@
     color: #000000;
 }
 
-
-input[type="text"],
-input[type="password"] {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    background-color: #f2f2f2;
-    color: #333;
+.MyP {
+    position: relative;
+    text-align: center;
 }
 
 
-/*input[type="text"] {
-    margin-top: 70px;
-}*/
 
 
-input[type="password"] {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
 
 
 .containerRegister {
@@ -58,4 +52,6 @@ input[type="password"] {
     border-radius: 40px;
     text-align: center;
     justify-content: center;
+    
 }
+

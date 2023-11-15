@@ -54,7 +54,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AssetID")
+                    b.Property<Guid>("AssetId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CategoryID")
@@ -71,7 +71,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
                     b.HasKey("AssetInPortfolioID");
 
-                    b.HasIndex("AssetID");
+                    b.HasIndex("AssetId");
 
                     b.HasIndex("CategoryID");
 
@@ -271,7 +271,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<Guid>("AssetInPortfolioID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("InvestPortfolioPortfolioID")
+                    b.Property<Guid?>("InvestPortfolioPortfolioID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PortfolionID")
@@ -302,7 +302,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 {
                     b.HasOne("InvestManager.ApplicatoinCore.Models.Asset", "Asset")
                         .WithMany()
-                        .HasForeignKey("AssetID")
+                        .HasForeignKey("AssetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -374,9 +374,7 @@ namespace InvestManager.Infrastructure.Data.Migrations
 
                     b.HasOne("InvestManager.ApplicatoinCore.Models.InvestPortfolio", "InvestPortfolio")
                         .WithMany()
-                        .HasForeignKey("InvestPortfolioPortfolioID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InvestPortfolioPortfolioID");
 
                     b.Navigation("AssetInPortfolio");
 

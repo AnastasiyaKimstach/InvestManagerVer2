@@ -139,18 +139,18 @@ namespace InvestManager.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     AssetInPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AssetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AssetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    CategotyID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CategotyID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AssetsInPortfolio", x => x.AssetInPortfolioID);
                     table.ForeignKey(
-                        name: "FK_AssetsInPortfolio_Assets_AssetID",
-                        column: x => x.AssetID,
+                        name: "FK_AssetsInPortfolio_Assets_AssetId",
+                        column: x => x.AssetId,
                         principalTable: "Assets",
                         principalColumn: "AssetID",
                         onDelete: ReferentialAction.Cascade);
@@ -199,8 +199,8 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<float>(type: "real", nullable: false),
                     AssetInPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PortfolionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    InvestPortfolioPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    InvestPortfolioPortfolioID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    PortfolionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -215,14 +215,13 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         name: "FK_Transactions_InvestPortfolios_InvestPortfolioPortfolioID",
                         column: x => x.InvestPortfolioPortfolioID,
                         principalTable: "InvestPortfolios",
-                        principalColumn: "PortfolioID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PortfolioID");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssetsInPortfolio_AssetID",
+                name: "IX_AssetsInPortfolio_AssetId",
                 table: "AssetsInPortfolio",
-                column: "AssetID");
+                column: "AssetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssetsInPortfolio_CategoryID",

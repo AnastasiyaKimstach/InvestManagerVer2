@@ -11,12 +11,16 @@ namespace InvestManager.ApplicatoinCore.Models
     {
         [Key]
         public Guid AssetInPortfolioID { get; set; }
-        public Guid AssetID { get; set; }
-        public Asset Asset { get; set; }
+
+        public Asset? Asset { get; set; }
+        public Guid AssetId { get; set; }
+
         public int Quantity { get; set; }
-        public Guid CategotyID { get; set; }
+
         public Category? Category { get; set; }
+        public Guid CategotyID { get; set; }
+
+        public InvestPortfolio? Portfolio { get; set; }
         public Guid PortfolioID { get; set; }
-        public InvestPortfolio? Portfolio{ get; set; }
     }
 }

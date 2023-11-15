@@ -20,8 +20,9 @@ namespace InvestManager.ApplicatoinCore.Models
         public DateTime DateOfBirth { get; set; }
         public DateTime DateOfRegistration { get; set; }= DateTime.Now;
         public bool Gender { get; set; }
+
+        public Country? Country { get; set; }
         public Guid CountryID { get; set; }
-        public Country Country { get; set; }
         public Guid StatusID { get; set; }
         public EmploymentStatus EmploymentStatus { get; set; }
         [Phone]

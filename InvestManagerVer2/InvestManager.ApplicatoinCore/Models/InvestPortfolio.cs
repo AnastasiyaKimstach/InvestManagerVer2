@@ -11,8 +11,10 @@ namespace InvestManager.ApplicatoinCore.Models
     {
         [Key]
         public Guid PortfolioID { get; set; }
+
+        public Client? Client { get; set; }
         public Guid ClientID { get; set; }
-        public Client Client { get; set; }
+
         public string PortfolioName { get; set;}
         public int PortfolioGoal { get; set; }
         public int InvestmentHorisont { get; set; }

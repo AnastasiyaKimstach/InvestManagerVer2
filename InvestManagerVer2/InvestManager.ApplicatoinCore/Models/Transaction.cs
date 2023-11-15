@@ -17,9 +17,11 @@ namespace InvestManager.ApplicatoinCore.Models
         public DateTime TransactionDate { get; set; }
         public int Quantity { get; set; }
         public float Amount { get; set; }
+
+        public AssetInPortfolio? AssetInPortfolio { get; set; }
         public Guid AssetInPortfolioID { get; set; }
-        public AssetInPortfolio AssetInPortfolio { get; set; }
+
+        public InvestPortfolio? InvestPortfolio { get; set; }
         public Guid PortfolionID { get; set; }
-        public InvestPortfolio InvestPortfolio { get; set; }
     }
 }
