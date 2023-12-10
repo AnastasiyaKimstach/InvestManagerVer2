@@ -8,5 +8,6 @@ namespace InvestManagerVer2.Web.Interfaces
         Task CreateCategoryAsync(CategoryViewModel viewModel);
         Task DeleteCategoryAsync(CategoryViewModel viewModel);
         Task<List<CategoryViewModel>> GetCategoryAsync();
+        Task<CategoryViewModel> GetCategoryViewModelByIdAsync(Guid id);
     }
 }

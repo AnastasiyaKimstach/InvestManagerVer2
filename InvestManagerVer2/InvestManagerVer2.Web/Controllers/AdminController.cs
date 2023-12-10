@@ -13,6 +13,13 @@ namespace InvestManagerVer2.Web.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICategoryService _categoryService;
 
+        public AdminController(ICategoryService cityViewModelService, IUnitOfWork unitOfWork, IMapper mapper)
+        {
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
+            _categoryService = cityViewModelService;
+        }
+
         public async Task<IActionResult> IndexAdmin()
         {
             var categories = await _categoryService.GetCategoryAsync();
@@ -31,18 +38,6 @@ namespace InvestManagerVer2.Web.Controllers
                 }
                 return View(listCategory);
             }
-            return View();
-        }
-
-        public AdminController(ICategoryService cityViewModelService, IUnitOfWork unitOfWork, IMapper mapper)
-        {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
-            _categoryService = cityViewModelService;
-        }
-
-        public IActionResult Index()
-        {
             return View();
         }
 
@@ -66,11 +61,54 @@ namespace InvestManagerVer2.Web.Controllers
                 return View();
             }
         }
-        //[HttpPost]
-        //public IActionResult IndexAdmin(Category model)
-        //{
 
-        //    return RedirectToAction("IndexAdmin");
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _categoryService.GetCategoryViewModelByIdAsync(id);
+            if (result == null)
+            {
+                return RedirectToAction("IndexAdmin");
+            }
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(CategoryViewModel viewModel)
+        {
+            await _categoryService.DeleteCategoryAsync(viewModel);
+            return RedirectToAction(nameof(IndexAdmin));
+        }
+
+
+
+        //[HttpGet]
+        //public async Task<IActionResult> Edit(int id)
+        //{
+        //    var result = await _categoryService.GetCategoryViewModelByIdAsync(id);
+        //    if (result == null)
+        //    {
+        //        return RedirectToAction("IndexA");//возвращение к странице аккауна
+        //    }
+
+        //    return View(result);
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(CategoryViewModel viewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        await _categoryService.Update(viewModel);//add updetw
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
         //}
     }
 }

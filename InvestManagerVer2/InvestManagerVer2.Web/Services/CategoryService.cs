@@ -45,5 +45,20 @@ namespace InvestManagerVer2.Web.Services
 
             return categoryes;
         }
+
+        public async Task<CategoryViewModel> GetCategoryViewModelByIdAsync(Guid id)
+        {
+            var category = await _unitOfWork.Categoryes.GetByIdAsync(id);
+            if (category == null)
+            {
+                var exception = new Exception($"Category was not found");
+
+                throw exception;
+            }
+
+            var dto = _mapper.Map<CategoryViewModel>(category);
+
+            return dto;
+        }
     }
 }
