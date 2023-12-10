@@ -1,0 +1,70 @@
+﻿@model List<InvestManagerVer2.Web.Models.CategoryViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<header class="bk_header" style="border-radius:20px;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius:20px;">
+            <div class="container-fluid" style="border-radius:20px;">
+                <a class="navbar-brand" href="#">InvestManager</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarText" style="border-radius:20px;">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="IndexAdmin" asp-controller="Admin">Categories</a> 
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Account" asp-controller="Admin">Account</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <form>
+    <br />
+    <button asp-action="Create" asp-controller="Admin" class="btn btn-primary">Create category</button>
+    <br /><br />
+    <table class="table table-light" style="border-radius:20px;">
+            <thead>
+                <tr class="table-active">
+                    <th>CategoryName</th>
+                <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+            @if(Model != null && Model.Any())
+            {
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>
+                            @category.CategoryName
+                        </td>
+                        <td style="text-align:right;">
+                            <div class="bttn-group btn-gr">
+                                <button style="margin-right:10px" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-primary" >Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <div>
+                            No Categories avaliable at this moment!
+                        </div>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        </table>
+    </form>

@@ -1,0 +1,31 @@
+﻿ @model InvestManagerVer2.Web.Models.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text_action" style="color:white;">Create New Category</h2>
+        </div>
+        <form asp-action="Create">
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text w-10" id="inputGroup-sizing-name">Category Name</span>
+                    <input asp-for="CategoryName" type="text" class="form-control" aria-describedby="inputGroup-sizing-name">                    
+                </div>
+                <div class="mb-3">
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <button @*asp-action="IndexAdmin" asp-controller="Admin"*@ type="submit" class="btn btn-primary" style="width: 150px;" >Create</button>
+            <a asp-action="IndexAdmin" asp-controller="Admin" class="btn btn-outline-primary" style="width:150px">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
