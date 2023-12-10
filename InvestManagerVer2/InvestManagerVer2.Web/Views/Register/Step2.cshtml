@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
+<div class="text-center">
+    <div class="containerRegister">
+        <form method="post" action="@Url.Action("IndexAdmin")">
+            <br />
+            <h1 class="h1Login">Sign Up</h1>
+            <br <br /><br />
+            <div class="containerRegister2">
+                <label class="form-label">What financial goal would you like to achieve through investing?</label>
+                <input class="form-control" type="text" placeholder="Enter the desired amount, $">
+                <br />
+                <label class="form-label">What is your investment horizon (the period for which you plan to invest)?</label>
+                <input class="form-control" type="text" placeholder="Enter Your Investment Horizon, year">
+                
+                <br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+            <button type="submit" class="btn btn-primary">Next</button><br /><br />
+            <p>Already have an account? <a href="@Url.Action("Login", "Home")" class="alert-link"> Login </a></p>
+        </form>
+    </div>
+</div>

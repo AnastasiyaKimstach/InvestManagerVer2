@@ -15,13 +15,7 @@ namespace InvestManager.Infrastructure.Data
 
         public IRepository<Category> Categoryes { get; }
 
-        public IRepository<ChangePrice> ChangePrices { get; }
-
         public IRepository<Client> Clients { get; }
-
-        public IRepository<Country> Countryes { get; }
-
-        public IRepository<EmploymentStatus> EmploymentStatus { get; }
 
         public IRepository<InvestPortfolio> InvestPortfolioes { get; }
 
@@ -31,8 +25,7 @@ namespace InvestManager.Infrastructure.Data
 
         public UnitOfWork(IRepository<Asset> assets, IRepository<AssetInPortfolio> assetInPortfolioes, 
             IRepository<AsssetPriceHistory> asssetPriceHistoryes, IRepository<Category> categoryes, 
-            IRepository<ChangePrice> changePrices, IRepository<Client> clientes, 
-            IRepository<Country> countryes, IRepository<EmploymentStatus> employmentStatus,
+            IRepository<Client> clientes, 
             IRepository<InvestPortfolio> investPortfolioes, IRepository<Statistics> statistics,
             IRepository<Transaction> transactions)
         {
@@ -40,10 +33,7 @@ namespace InvestManager.Infrastructure.Data
             AssetInPortfolioes = assetInPortfolioes;
             AsssetPriceHistoryes = asssetPriceHistoryes;
             Categoryes = categoryes;
-            ChangePrices = changePrices;
             Clients = clientes;
-            Countryes = countryes;
-            EmploymentStatus = employmentStatus;
             InvestPortfolioes = investPortfolioes;
             Statistics = statistics;
             Transactions = transactions;

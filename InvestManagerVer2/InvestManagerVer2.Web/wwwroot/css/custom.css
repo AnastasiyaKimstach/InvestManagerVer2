@@ -1,4 +1,5 @@
-﻿.containerLogin {
+﻿
+.containerLogin {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -9,16 +10,10 @@
     background-color: #f2f2f2;
     border: 1px solid #ccc;
     border-radius: 40px;
-    text-align: left;
-    justify-content: left;
-
-   
-}
-/*.btn {
-    position: relative;
     text-align: center;
     justify-content: center;
-}*/
+}
+
 .h1Login {
     position: relative;
     text-align: center;
@@ -33,11 +28,6 @@
     position: relative;
     text-align: center;
 }
-
-
-
-
-
 
 .containerRegister {
     position: absolute;

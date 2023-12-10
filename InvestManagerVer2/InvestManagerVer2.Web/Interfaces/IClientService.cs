@@ -1,6 +1,9 @@
 ﻿using InvestManager.ApplicatoinCore.Models;
+using InvestManagerVer2.Web.Models;
 
 public interface IClientService
 {
-    Task<IEnumerable<Client>> GetClientsAsync();
+    public Task<RegisterViewModel> Register(RegisterViewModel model);
+
+    public Task<LoginViewModel> Login(LoginViewModel model);
 }

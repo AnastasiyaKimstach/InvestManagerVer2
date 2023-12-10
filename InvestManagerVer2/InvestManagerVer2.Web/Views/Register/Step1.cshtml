@@ -3,37 +3,31 @@
 }
 <div class="text-center">
     <div class="containerRegister">
-        <form>
+        <form method="post" action="@Url.Action("Step2")">
             <br />
             <h1 class="h1Login">Sign Up</h1>
             <div class="containerRegister2">
             <input class="form-control" type="text" placeholder="Enter Your Name">
             <input class="form-control" type="text" placeholder="Enter Your Surname">
-            <input class="form-control" type="text" placeholder="Enter Your Patronumic (if avaliable)">
-            <input class="form-control" type="datetime" placeholder="Enter Your Date Of Birth">
-            <select class="form-select" aria-label="Select Your Country" placeholder="Select Your Country">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <select class="form-select" aria-label="Select Your Employment Status" placeholder="Select Your Employment Status">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-            <label for="exampleInputPassword1" class="form-label">Select Yout Gender</label><br>
-            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-            <label class="btn btn-secondary" for="option1">Male</label>
-
-            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-            <label class="btn btn-secondary" for="option2">Female</label>
-            <input class="form-control" type="text" placeholder="Enter Your Emale"><br />
+            <input class="form-control" type="date" placeholder="Enter Your Date Of Birth">
+            <input class="form-control" type="text" placeholder="Enter Your Emale">
             <input class="form-control" type="text" placeholder="Enter Your Phone Number"><br />
+                <div class="form-group">
+                    <br />
+                    <input type="password" class="form-control" id="myInput" placeholder="Enter Your Password">
+                    <input type="checkbox" onclick="myFunction()"> Show Password
+
+                </div>
+                <div class="form-group">
+                    <br />
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                </div>
+
+                <br /> 
+                <input type="checkbox"> By continuing you accept our Privacy Policy and Term of Use
+                <br />
             </div>
-            <button type="button" class="btn btn-primary">Next</button><br /><br />
+            <button type="submit" class="btn btn-primary">Next</button><br /><br />
             <p>Already have an account? <a href="@Url.Action("Login", "Home")" class="alert-link"> Login </a></p>
         </form>
     </div>

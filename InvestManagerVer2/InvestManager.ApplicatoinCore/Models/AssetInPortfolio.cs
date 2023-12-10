@@ -12,6 +12,7 @@ namespace InvestManager.ApplicatoinCore.Models
         public Asset? Asset { get; set; }
         public Guid AssetId { get; set; }
 
+
         public int Quantity { get; set; }
 
         public Category? Category { get; set; }

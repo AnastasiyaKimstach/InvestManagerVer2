@@ -1,16 +1,17 @@
 
 
+using InvestManagerVer2.Web.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);//Failed to load configuration from file 'D:\source\repos\InvestManagerVer2\InvestManagerVer2\InvestManagerVer2.Web\appsettings.json'
 
 InvestManager.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//builder.Services.AddDbContext<InvestManagerContext>(
-//    options =>
-//    options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=InvestManager;Trusted_Connection=True;MultipleActiveResultSets=true"));
-//builder.Services.AddScoped<IRepository, InvestManagerRepository>();
-//builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddCoreServices();
+
+//AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
@@ -31,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Login}/{id?}");
 
 app.Run();

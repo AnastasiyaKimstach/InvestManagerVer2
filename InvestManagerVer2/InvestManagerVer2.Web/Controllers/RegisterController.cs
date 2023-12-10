@@ -1,4 +1,5 @@
 ﻿using InvestManager.ApplicatoinCore.Models;
+using InvestManagerVer2.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InvestManagerVer2.Web.Controllers
@@ -12,9 +13,9 @@ namespace InvestManagerVer2.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Step1(Client model)
+        public IActionResult Step1(RegisterViewModel model)
         {
-            return RedirectToAction("Step2");
+           return RedirectToAction("Step2");
         }
 
         [HttpGet]
@@ -24,32 +25,25 @@ namespace InvestManagerVer2.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Step2(Client model)
+        public IActionResult Step2(RegisterViewModel model)
         {
-            return RedirectToAction("Step3");
+            return RedirectToAction("Step2");
         }
 
-        [HttpGet]
-        public IActionResult Step3()
-        {
-            return View();
-        }
+        
 
-        [HttpPost]
-        public IActionResult Step3(Client model)
-        {
-            // Обработка данных из третьей формы
-            // Завершение регистрации пользователя
-            return RedirectToAction("RegistrationComplete");
-        }
-
-        //public IActionResult RegistrationComplete()
+        //[HttpGet]
+        //public IActionResult Index()
         //{
         //    return View();
         //}
-        public IActionResult Index()
+
+        [HttpPost]
+        public IActionResult IndexAdmin() //RegisterViewModel model
         {
-            return View();
+            return RedirectToAction("IndexAdmin","Admin");
         }
+
+
     }
 }

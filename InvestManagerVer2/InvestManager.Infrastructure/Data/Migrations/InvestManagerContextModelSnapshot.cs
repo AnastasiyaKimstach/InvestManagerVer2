@@ -95,34 +95,10 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.ChangePrice", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Month")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ChangesPrice");
-                });
-
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Client", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CountryID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -134,12 +110,6 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("EmploymentStatusId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Gender")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -153,24 +123,14 @@ namespace InvestManager.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Pathronumic")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Role")
                         .HasColumnType("int");
-
-                    b.Property<Guid>("StatusID")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CountryID");
-
-                    b.HasIndex("EmploymentStatusId");
 
                     b.ToTable("Clients");
                 });
@@ -188,21 +148,6 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.EmploymentStatus", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("StatusName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EmploymentStatuses");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.InvestPortfolio", b =>
@@ -321,25 +266,6 @@ namespace InvestManager.Infrastructure.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Portfolio");
-                });
-
-            modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.Client", b =>
-                {
-                    b.HasOne("InvestManager.ApplicatoinCore.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("InvestManager.ApplicatoinCore.Models.EmploymentStatus", "EmploymentStatus")
-                        .WithMany()
-                        .HasForeignKey("EmploymentStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-
-                    b.Navigation("EmploymentStatus");
                 });
 
             modelBuilder.Entity("InvestManager.ApplicatoinCore.Models.InvestPortfolio", b =>

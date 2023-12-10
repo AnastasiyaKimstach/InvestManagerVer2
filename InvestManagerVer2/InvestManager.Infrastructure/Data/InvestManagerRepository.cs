@@ -1,4 +1,5 @@
 ﻿using InvestManager.ApplicatoinCore.Models;
+using InvestManager.ApplicatoinCore.QueryOptions;
 using InvestManager.Infrastructure.Data;
 using InvestManager.Infrastructure.Data.DBExtentions;
 using InvestManagerVer2.Web.Interfaces;
@@ -28,7 +29,18 @@ namespace InvestManagerVer2.Web.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<T?> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
+        public async Task<IList<T>> GetAllAsync(QueryEntityOptions<T> options)
+        {
+            return await _dbContext.Set<T>()
+                                            .FromSqlQquery(options.SqlQuery)
+                                            .IncludeFields(options.IncludeOptions)
+                                            .FilterEntities(options.FilterOption)
+                                            .OrderEntityBy(options.SortOptions)
+                                            .SkipTakeEntities(options.PageOptions.CurrentPage, options.PageOptions.PageSize)
+                                            .ToListAsync();
+        }
+
+        public async Task<T?> GetByIdAsync(Guid id, params Expression<Func<T, object>>[] includes)
         {
             var entities = await _dbContext.Set<T>().IncludeFields(includes).FirstOrDefaultAsync(x => x.Id == x.Id);
             return entities;
