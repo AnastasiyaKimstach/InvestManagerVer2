@@ -21,13 +21,24 @@ namespace InvestManagerVer2.Web.Configuration
             services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
             services.AddScoped(typeof(IInvestPortfolioService), typeof(InvestPortfolioService));
             services.AddScoped(typeof(ITransactionService), typeof(TransectionService));
-            var config = new MapperConfiguration(cfg =>
+            services.AddScoped(typeof(IStatisticService), typeof(StatisticService));
+            var config = new MapperConfiguration(cfg1 =>
             {
-                cfg.CreateMap<Category, CategoryViewModel>();
-                cfg.CreateMap<CategoryViewModel, Category>();
+                cfg1.CreateMap<Category, CategoryViewModel>();
+                cfg1.CreateMap<CategoryViewModel, Category>();
             });
+
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+
+            var configStatistic = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Statistics, StatisticsViewModel>();
+                cfg.CreateMap<StatisticsViewModel, Statistics>();
+            });
+
+            IMapper mapperStatistic = configStatistic.CreateMapper();
+            services.AddSingleton(mapperStatistic);
             return services;
 
 

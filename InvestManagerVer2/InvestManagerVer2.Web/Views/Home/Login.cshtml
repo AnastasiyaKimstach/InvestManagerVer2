@@ -11,11 +11,14 @@
         <form method="post" action="@Url.Action("IndexAdmin")">
             <div class="mb-3">
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Emale">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 
                 <input type="password" class="form-control" placeholder="Enter Your Password" id="exampleInputPassword1">
+                <div class="mb-3 form-check">
+                    @*<input type="checkbox" class="form-check-input" id="rememberMeCheck"/>*@
+                    @*<label class="form-check-label" for="rememberMeCheck" style="text-align:left !important;">Remember me</label>*@
+                </div>
             </div><br /> <br /> <br /><br /> <br /><br /> 
             <button type="submit" asp-action="IndexAdmin" asp-controller="Admin" class="btn btn-primary">Login</button>
             
