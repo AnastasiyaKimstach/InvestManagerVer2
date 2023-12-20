@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InvestManager.ApplicatoinCore.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InvestManagerVer2.Web.Models
 {
-    public class StatisticsViewModel 
+    public class StatisticsViewModel : BaseModel
     {
         public InvestPortfolioViewModel? Portfolio { get; set; }
         public Guid PortfolioID { get; set; }

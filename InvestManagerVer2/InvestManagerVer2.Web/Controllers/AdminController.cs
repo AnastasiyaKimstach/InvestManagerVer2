@@ -3,6 +3,7 @@ using InvestManager.ApplicatoinCore.Interfaces;
 using InvestManager.ApplicatoinCore.Models;
 using InvestManagerVer2.Web.Interfaces;
 using InvestManagerVer2.Web.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InvestManagerVer2.Web.Controllers
@@ -12,6 +13,7 @@ namespace InvestManagerVer2.Web.Controllers
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICategoryService _categoryService;
+        private readonly IClientService _clientService;
 
         public async Task<IActionResult> IndexAdmin()
         {
@@ -34,11 +36,12 @@ namespace InvestManagerVer2.Web.Controllers
             return View();
         }
 
-        public AdminController(ICategoryService cityViewModelService, IUnitOfWork unitOfWork, IMapper mapper)
+        public AdminController(IClientService clientService,ICategoryService cityViewModelService, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _categoryService = cityViewModelService;
+            _clientService = clientService;
         }
 
         public IActionResult Index()
@@ -66,11 +69,15 @@ namespace InvestManagerVer2.Web.Controllers
                 return View();
             }
         }
-        //[HttpPost]
-        //public IActionResult IndexAdmin(Category model)
-        //{
 
-        //    return RedirectToAction("IndexAdmin");
-        //}
+        public async Task<IActionResult> Account()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> EditAccount()
+        {
+            return View();
+        }
     }
 }

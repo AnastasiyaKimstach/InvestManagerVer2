@@ -4,7 +4,7 @@ namespace InvestManagerVer2.Web.Controllers
 {
     public class AssetInPortfolioController : Controller
     {
-        public IActionResult Index()
+        public IActionResult IndexAssetInPortfolio()
         {
             return View();
         }

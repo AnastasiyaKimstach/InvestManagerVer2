@@ -1,14 +1,26 @@
 
 
 using InvestManagerVer2.Web.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using InvestManager.Infrastructure.Data;
+using InvestManagerVer2.Web.Areas.Identity.Data;
 
-var builder = WebApplication.CreateBuilder(args);//Failed to load configuration from file 'D:\source\repos\InvestManagerVer2\InvestManagerVer2\InvestManagerVer2.Web\appsettings.json'
+var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("InvestManagetContextConnection") ?? throw new InvalidOperationException("Connection string 'InvestManagetContextConnection' not found.");
+
+builder.Services.AddDbContext<InvestManagetContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<InvestManagerVer2WebUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<InvestManagetContext>();
 
 InvestManager.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddCoreServices();
+builder.Services.AddRazorPages();
 
 //AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -27,11 +39,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Login}/{id?}");
+app.MapRazorPages();
 
 app.Run();

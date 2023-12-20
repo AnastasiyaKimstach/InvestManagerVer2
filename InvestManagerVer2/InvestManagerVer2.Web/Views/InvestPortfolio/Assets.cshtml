@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+<link href="~/css/custom.css" rel="stylesheet" />
 @{
+    ViewData["Title"] = "Index";
 }
+<form>
+    <br />
+    <div class="position-relative popup-search w-100">
+        <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search" placeholder="Search">
+        <span class="position-absolute top-50 search-show ms-3 translate-middle-y start-0 top-50 fs-4"><i class='bx bx-search'></i></span>
+    </div>
+    <button type="button" class="btn-close d-md-none" data-bs-dismiss="modal" aria-label="Close"></button>
+    <br />
+    <table class="table table-light" style="border-radius:5px; overflow: hidden;">
+        <thead>
+            <tr class="table-active">
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <div>
+                            No assets avaliable at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

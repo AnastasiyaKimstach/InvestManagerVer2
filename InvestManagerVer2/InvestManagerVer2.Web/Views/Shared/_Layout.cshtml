@@ -20,35 +20,61 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
-    @*<header class="bk_header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">InvestManager</a>
+    <header class="bk_header" style="">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="color:white; border-radius:10px;  ">
+            <div class="container-fluid" style="border-radius:5px;">
+                <a class="navbar-brand" href="#" style="margin-left:100px">InvestManager</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
+                <div class="collapse navbar-collapse" id="navbarText" style="border-radius:5px;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Login" asp-controller="Home">Features</a>
+                            <a class="nav-link" asp-action="IndexAdmin" asp-controller="Admin">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Login" asp-controller="Home">Features</a>
+                            <a class="nav-link" asp-action="Account" asp-controller="Admin">Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Login" asp-controller="Home">Pricing</a>
+                            <a class="nav-link" asp-action="IndexInvestor" asp-controller="InvestPortfolio">InvestPortfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Assets" asp-controller="InvestPortfolio">Assets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Transactions" asp-controller="InvestPortfolio">Transactions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Statistics" asp-controller="InvestPortfolio">Statistic</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="IndexAssetInPortfolio" asp-controller="AssetInPortfolio">AssetInPortfolio</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link" asp-action="IndexAssetInPortfolio" asp-controller="AssetInPortfolio">AssetInPortfolio</a>
+                        </li>*@
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="" asp-controller="">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="" asp-controller="">Privacy</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    </header>*@
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+    <footer class="border-top footer text-muted" style="color:black; background:white; border-radius:10px; ">
+        <div class="container" @*style="color:white; background:white;*@">
+            &copy; 2023 - InvestManager
+        </div>
+    </footer>
    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
