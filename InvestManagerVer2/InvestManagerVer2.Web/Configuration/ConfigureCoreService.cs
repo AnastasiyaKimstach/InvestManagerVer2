@@ -26,23 +26,19 @@ namespace InvestManagerVer2.Web.Configuration
             {
                 cfg1.CreateMap<Category, CategoryViewModel>();
                 cfg1.CreateMap<CategoryViewModel, Category>();
+                cfg1.CreateMap<Statistics, StatisticsViewModel>();
+                cfg1.CreateMap<StatisticsViewModel, Statistics>();
+                cfg1.CreateMap<AssetInPortfolio, AssetInPortfolioService>();
+                cfg1.CreateMap<AssetInPortfolioService, AssetInPortfolio>();
+                cfg1.CreateMap<ClientService, Client>();
+                cfg1.CreateMap<InvestManager.ApplicatoinCore.Models.Client, InvestManagerVer2.Web.Models.RegisterViewModel>();
+                
             });
 
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
-            var configStatistic = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Statistics, StatisticsViewModel>();
-                cfg.CreateMap<StatisticsViewModel, Statistics>();
-            });
-
-            IMapper mapperStatistic = configStatistic.CreateMapper();
-            services.AddSingleton(mapperStatistic);
-            return services;
-
-
-            
+            return services;            
         }
 
     }

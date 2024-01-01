@@ -1,4 +1,5 @@
 ﻿using InvestManager.ApplicatoinCore.Enums;
+using InvestManager.ApplicatoinCore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace InvestManagerVer2.Web.Models { 
-    public class RegisterViewModel
+    public class RegisterViewModel : BaseModel
     {
         public string Name { get; set; }
         public string Surname { get; set; }

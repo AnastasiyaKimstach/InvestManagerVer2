@@ -70,13 +70,61 @@ namespace InvestManagerVer2.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> Account()
+
+        [HttpGet]
+        public async Task<IActionResult> EditAccount(Guid id)
         {
-            return View();
+            var result = await _clientService.GetClientViewModelByIdAsync(id);
+            if (result == null)
+            {
+                return RedirectToAction("Account");
+            }
+
+            return View(result);
         }
 
-        public async Task<IActionResult> EditAccount()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAccount(RegisterViewModel viewModel)
         {
+            if (ModelState.IsValid)
+            {
+                await _clientService.UpdateClientAsync(viewModel);
+                return RedirectToAction(nameof(Account));
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        public async Task<IActionResult> Account()
+        {
+            var clients = await _clientService.GetClientAsync();
+            List<RegisterViewModel> listClient = new List<RegisterViewModel>();
+
+            if (clients != null)
+            {
+                foreach (var client in clients)
+                {
+                    if (client.Role == InvestManager.ApplicatoinCore.Enums.Role.Admin) 
+                    {
+                        var clientViewModel = new RegisterViewModel()
+                        {
+                            Name = client.Name,
+                            Surname = client.Surname,
+                            Password = client.Password,
+                            DateOfBirth = client.DateOfBirth,
+                            DateOfRegistration = client.DateOfRegistration,
+                            NumberPhone = client.NumberPhone,
+                            Email = client.Email
+                        };
+                        listClient.Add(clientViewModel);
+                    }
+                }
+                return View(listClient);
+            }
             return View();
         }
     }

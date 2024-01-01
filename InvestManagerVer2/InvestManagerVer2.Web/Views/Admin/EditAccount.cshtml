@@ -1,4 +1,5 @@
-﻿@model InvestManagerVer2.Web.Models.RegisterViewModel
+﻿@using InvestManager.ApplicatoinCore.Models;
+@model InvestManagerVer2.Web.Models.RegisterViewModel
 @{
     ViewData["Title"] = "Edit";
 }
@@ -19,18 +20,23 @@
                     <span class="input-group-text w-10" id="inputGroup-sizing-name" style="width:200px;">Surname</span>
                     <input asp-for="Surname" type="text" class="form-control" aria-describedby="inputGroup-sizing-name">
                 </div>
+
                 <div class="input-group">
                     <span class="input-group-text w-10" id="inputGroup-sizing-name" style="width:200px;">Password</span>
                     <input asp-for="Password" type="text" class="form-control" aria-describedby="inputGroup-sizing-name">
                 </div>
-                                <div class="input-group">
+
+                <div class="input-group">
                     <span class="input-group-text w-10" id="inputGroup-sizing-name" style="width:200px;">Phone number</span>
                     <input asp-for="NumberPhone" type="text" class="form-control" aria-describedby="inputGroup-sizing-name">
                 </div>
-                                    <div class="input-group">
+
+                <div class="input-group">
                     <span class="input-group-text w-10" id="inputGroup-sizing-name" style="width:200px;">Email</span>
                     <input asp-for="Email" type="text" class="form-control" aria-describedby="inputGroup-sizing-name">
                 </div>
+
+
                 <div class="mb-3">
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>

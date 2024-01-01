@@ -4,9 +4,9 @@
 }
 <form>
     <br />
-    <button asp-action="EditAccount" asp-controller="Admin" class="btn btn-primary">Edit</button>
+     
     <br /><br />
-    <table class="table table-light" style="width:140%; border-radius:5px; overflow: hidden;">
+    <table class="table table-light" style="width:1250px; border-radius:5px; overflow: hidden;">
         <thead >
             <tr class="table-active">
                 <th>Name</th>
@@ -16,6 +16,7 @@
                 <th>Date of registration</th>
                 <th>Phone number</th>
                 <th>Email</th>
+                <th>Action</th>
             </tr>
 
         </thead>
@@ -46,8 +47,8 @@
                         <td>
                             @user.Email
                         </td>
-                        <td >
-                           
+                        <td>
+                            <button asp-action="EditAccount" asp-controller="Admin" asp-route-id="@user.Id" class="btn btn-primary">Edit</button>
                         </td>
                     </tr>
                 }

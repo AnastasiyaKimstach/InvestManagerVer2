@@ -1,4 +1,5 @@
-﻿using InvestManager.ApplicatoinCore.Enums;
+﻿using AutoMapper;
+using InvestManager.ApplicatoinCore.Enums;
 using InvestManager.ApplicatoinCore.Interfaces;
 using InvestManager.ApplicatoinCore.Models;
 using InvestManager.ApplicatoinCore.QueryOptions;
@@ -11,11 +12,14 @@ namespace InvestManagerVer2.Web.Services
     public class ClientService : IClientService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ClientService(IUnitOfWork unitOfWork)
+        public ClientService(IMapper mapper, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
+
 
 
         public async Task<LoginViewModel> Login(LoginViewModel model)
@@ -68,6 +72,44 @@ namespace InvestManagerVer2.Web.Services
             {
                 return model;
             }
+        }
+
+        public async Task<List<RegisterViewModel>> GetClientAsync()
+        {
+            var options = new QueryEntityOptions<Client>().AddSortOption(false, x => x.Name);
+            var entities = await _unitOfWork.Clients.GetAllAsync(options);
+            var categoryes = _mapper.Map<List<RegisterViewModel>>(entities);
+
+            return categoryes;
+        }
+
+        public async Task<RegisterViewModel> GetClientViewModelByIdAsync(Guid id)
+        {
+            var client = await _unitOfWork.Clients.GetByIdAsync(id);
+            if (client == null)
+            {
+                var exception = new Exception($"Client with id = {id} was not found");
+
+                throw exception;
+            }
+
+            var dto = _mapper.Map<RegisterViewModel>(client);
+
+            return dto;
+        }
+
+        public async Task UpdateClientAsync(RegisterViewModel viewModel)
+        {
+            var existingClient = await _unitOfWork.Clients.GetByIdAsync(viewModel.Id);
+            if (existingClient is null)
+            {
+                var exception = new Exception($"Client {viewModel.Id} was not found");
+                throw exception;
+            }
+
+            Client.ClientDetails details = new Client.ClientDetails(viewModel.Name, viewModel.Surname, viewModel.Password, viewModel.NumberPhone, viewModel.Email);
+            existingClient.UpdateDetails(details);
+            await _unitOfWork.Clients.UpdateAsync(existingClient);
         }
     }
 }

@@ -6,7 +6,7 @@
     <br />
     <button asp-action="Create" asp-controller="Admin" class="btn btn-primary">Create category</button>
     <br /><br />
-    <table class="table table-light" style="border-radius:5px; overflow: hidden;">
+    <table class="table table-light" style="width:1200px; border-radius:5px; overflow: hidden;">
             <thead>
                 <tr class="table-active">
                     <th>CategoryName</th>
@@ -20,12 +20,14 @@
                 @foreach (var category in Model)
                 {
                     <tr>
+                        <a href="d:\source\repos\investmanagerver2\investmanagerver2\investmanagerver2.web\views\admin\indexadmin.cshtml">d:\source\repos\investmanagerver2\investmanagerver2\investmanagerver2.web\views\admin\indexadmin.cshtml</a>
                         <td>
                             @category.CategoryName
                         </td>
+                        
                         <td style="text-align:right;">
                             <div class="bttn-group btn-gr">
-                                <button style="margin-right:10px" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-primary" >Delete</button>
+                                <button style="margin-right:10px" asp-action="Delete" asp-controller="Admin" asp-route-id="@category.Id" class="btn btn-primary">Delete</button>
                             </div>
                         </td>
                     </tr>

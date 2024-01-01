@@ -18,8 +18,5 @@ namespace InvestManager.ApplicatoinCore.Models
 
         public AssetInPortfolio? AssetInPortfolio { get; set; }
         public Guid AssetInPortfolioID { get; set; }
-
-        public InvestPortfolio? InvestPortfolio { get; set; }
-        public Guid PortfolionID { get; set; }
     }
 }
